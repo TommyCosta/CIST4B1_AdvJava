@@ -10,17 +10,14 @@ By completeing this course, I hope to deepen my understanding of databases and h
 In-Class Warm Up Java File:
 
 public class Animal {
-	
 	public void sound() {
 		System.out.println("Animal noise");
 	}
-	
 	public static void main(String[] args) {
 		Panda p1 = new Panda();
 		Shark s1 = new Shark();
 		Rooster r1 = new Rooster();
 		Animal[] zoo = {p1, s1, r1};
-
 		for (Animal a : zoo) {
 			a.sound();
 		}
@@ -30,7 +27,6 @@ public class Animal {
 class Panda extends Animal {
 	String favoriteFood = "Bamboo";
     int weight = 150;
-	
     @Override
 	public void sound() {
 		System.out.println("munch munch");
@@ -40,7 +36,6 @@ class Panda extends Animal {
 class Shark extends Animal {
 	int teethCount = 300;
     boolean isDangerous = true;
-	
 	@Override
 	public void sound() {
 		System.out.println("chomp");
@@ -50,7 +45,6 @@ class Shark extends Animal {
 class Rooster extends Animal {
 	String featherColor = "Red";
     int crowVolume = 5;
-	
 	@Override
 	public void sound() {
 		System.out.println("peck peck");
