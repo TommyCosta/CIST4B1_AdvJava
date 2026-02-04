@@ -8,47 +8,4 @@ Goals:
 By completeing this course, I hope to deepen my understanding of databases and how to build them efficently. It's been two semesters since I have taken a Java course, so reinforcing that language wil also be nice. Personal growth is the personal goal, but this course also leads to a potential degree someday.
 
 In-Class Warm Up Java File:
-
-public class Animal {
-	public void sound() {
-		System.out.println("Animal noise");
-	}
-	public static void main(String[] args) {
-		Panda p1 = new Panda();
-		Shark s1 = new Shark();
-		Rooster r1 = new Rooster();
-		Animal[] zoo = {p1, s1, r1};
-		for (Animal a : zoo) {
-			a.sound();
-		}
-	}
-}
-
-class Panda extends Animal {
-	String favoriteFood = "Bamboo";
-    int weight = 150;
-    @Override
-	public void sound() {
-		System.out.println("munch munch");
-	}
-}
-
-class Shark extends Animal {
-	int teethCount = 300;
-    boolean isDangerous = true;
-	@Override
-	public void sound() {
-		System.out.println("chomp");
-	}
-}
-
-class Rooster extends Animal {
-	String featherColor = "Red";
-    int crowVolume = 5;
-	@Override
-	public void sound() {
-		System.out.println("peck peck");
-	}
-}
-
-
+[Animal.java](https://github.com/user-attachments/files/25061208/Animal.java)
