@@ -1,0 +1,64 @@
+public class BetSplit extends Bet {
+    int numberA;
+    int numberB;
+
+    // Valid split pairs 
+    private static int[][] VALID_SPLITS = {
+        // Horizontal adjacencies
+        {1,2},{2,3},{4,5},{5,6},{7,8},{8,9},
+        {10,11},{11,12},{13,14},{14,15},{16,17},{17,18},
+        {19,20},{20,21},{22,23},{23,24},{25,26},{26,27},
+        {28,29},{29,30},{31,32},{32,33},{34,35},{35,36},
+        // Vertical adjacencies
+        {1,4},  {2,5},  {3,6},  {4,7},  {5,8},  {6,9},
+        {7,10}, {8,11}, {9,12}, {10,13},{11,14},{12,15},
+        {13,16},{14,17},{15,18},{16,19},{17,20},{18,21},
+        {19,22},{20,23},{21,24},{22,25},{23,26},{24,27},
+        {25,28},{26,29},{27,30},{28,31},{29,32},{30,33},
+        {31,34},{32,35},{33,36},
+        // 0 and 00 adjacencies
+        {0,1},  {0,2},  {0,37}, {1,37}, {2,37}, {3,37}
+    };
+
+    public BetSplit(int wagerAmount, int numberA, int numberB) {
+        super(wagerAmount);
+        // Validate range
+        if (numberA < 0 || numberA > 37 || numberB < 0 || numberB > 37) {
+            throw new IllegalArgumentException("Numbers must be between 0 and 37.");
+        }
+        // Sort low to high for comparison
+        int low  = (numberA < numberB) ? numberA : numberB;
+        int high = (numberA < numberB) ? numberB : numberA;
+        // Check against valid split pairs
+        boolean valid = false;
+        for (int i = 0; i < VALID_SPLITS.length; i++) {
+            if (VALID_SPLITS[i][0] == low && VALID_SPLITS[i][1] == high) {
+                valid = true;
+                break;
+            }
+        }
+        if (!valid) {
+            throw new IllegalArgumentException("Numbers " + numberA + " and "
+                + numberB + " are not adjacent on the board.");
+        }
+        this.numberA = numberA;
+        this.numberB = numberB;
+    }
+
+    @Override
+    public boolean isWinner(WheelResult result) {
+        return result.number == numberA || result.number == numberB;
+    }
+
+    @Override
+    public int getPayoutMultiplier() {
+        return 17;
+    }
+
+    @Override
+    public String toString() {
+        String displayA = (numberA == 37) ? "00" : String.valueOf(numberA);
+        String displayB = (numberB == 37) ? "00" : String.valueOf(numberB);
+        return "Split Bet: $" + wagerAmount + " on " + displayA + "/" + displayB;
+    }
+}
